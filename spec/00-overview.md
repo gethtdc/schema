@@ -93,3 +93,32 @@ HTDC Schema is a standard for the structure of hypertext documents with metadata
 | Block node  | Structural content        | `section`, `h1`, `p`, `img`        | `02-blocks`    |
 | Inline node | Content within blocks     | `text`, `ref`, `footnoteRef`       | `03-inlines`   |
 | Mark        | Inline annotation         | `italic`, `bold`, `link`, `code`   | `04-marks`     |
+
+
+## 3. Terminology
+
+The key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** are to be interpreted as described in RFC 2119.
+
+**HTDC Doc** — A JSON object conforming to the envelope described in `01-envelope.md`, containing `schemaVersion`, `meta`, and `root`.
+
+**AST** — The tree of nodes rooted at the document's `root` array. Used interchangeably with "document tree."
+
+**Node** — A JSON object within the AST with a required `type` field. Nodes are either **block** nodes (which participate in flow and may contain other blocks or inlines) or **inline** nodes (which occur within a block's inline content).
+
+**Mark** — A non-structural annotation on inline text (bold, italic, link, etc.), expressed as an element of a text node's `marks` array. Marks do not nest structurally; they are a flat set per text node.
+
+**ID** — A string identifier attached to a node, used as a target for references. IDs are document-scoped and MUST be unique within a document.
+
+**Reference** — A node or mark that points to a node by ID, deferring text resolution to render time.
+
+**Producer** — Any process that emits an HTDC Doc.
+
+**Consumer** — Any process that accepts an HTDC Doc and produces output or analysis.
+
+**Renderer** — A consumer that produces a rendered output (HTML, PDF, DOCX, EPUB, etc.).
+
+**Style profile** — A renderer-specific input, separate from the document, that supplies visual configuration: fonts, colors, spacing, page geometry, numbering formats, and so on. Style profiles are explicitly *not* part of this specification.
+
+**Normalization** — The deterministic transformation of a valid document into a canonical form, such that two semantically equivalent documents produce identical normalized ASTs.
+
+**Conformance** — The property of a producer or consumer meeting the requirements of `09-conformance.md`.
