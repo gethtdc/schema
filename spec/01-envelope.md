@@ -57,7 +57,7 @@ Producers MUST emit the version of the specification they were built against, no
 | Field      | Type        | Required | Description                                             |
 |------------|-------------|----------|---------------------------------------------------------|
 | `title`    | `string`    | Yes      | Human-readable document title                           |
-| `subtitle` | `string`    | No       | Secondary title, usually rendered beneath `title`               |
+| `subtitle` | `string`    | No       | Secondary title, usually rendered beneath `title`       |
 | `authors`  | `string[]`  | No       | Author names, in display order                          |
 | `date`     | `string`    | No       | ISO 8601 date or date-time (see §3.2)                   |
 | `lang`     | `string`    | No       | BCP 47 language tag for the document's primary language |
